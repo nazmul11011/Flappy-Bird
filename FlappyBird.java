@@ -19,6 +19,7 @@ public class FlappyBird extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        move();
         repaint();
     }
 
@@ -35,6 +36,8 @@ public class FlappyBird extends JPanel implements ActionListener {
     }
 
     Bird bird;
+    int velocityY = -6;
+
     Timer gameLoop;
 
     FlappyBird(){
@@ -58,8 +61,13 @@ public class FlappyBird extends JPanel implements ActionListener {
     }
 
     public void draw(Graphics g){
+//        System.out.println("Checking");
         g.drawImage(background,0,0,boardWidth,boardHeight,null);
 
         g.drawImage(bird.img,bird.x,bird.y,bird.width,bird.height,null);
+    }
+
+    public void move(){
+        bird.y += velocityY;
     }
 }
