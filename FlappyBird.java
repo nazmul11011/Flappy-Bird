@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class FlappyBird extends JPanel {
+public class FlappyBird extends JPanel implements ActionListener {
     int boardWidth = 360;
     int boardHeight =640;
 
@@ -15,6 +17,11 @@ public class FlappyBird extends JPanel {
     int birdWidth = 34;
     int birdHeight = 24;
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
+
     class Bird{
         int x = birdX;
         int y = birdY;
@@ -26,7 +33,9 @@ public class FlappyBird extends JPanel {
             this.img = img;
         }
     }
+
     Bird bird;
+    Timer gameLoop;
 
     FlappyBird(){
         setPreferredSize(new Dimension(boardWidth,boardHeight));
@@ -38,6 +47,9 @@ public class FlappyBird extends JPanel {
         bottomPipe = new ImageIcon(getClass().getResource("./bottompipe.png")).getImage();
 
         bird = new Bird(birdImg);
+
+        gameLoop = new Timer(1000/60,this);
+        gameLoop.start();
     }
 
     public void paintComponent(Graphics g){
