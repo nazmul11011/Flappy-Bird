@@ -14,7 +14,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     Image background;
     Image birdImg;
     Image topPipeImg;
-    Image bottomPipe;
+    Image bottomPipeImg;
 
     int birdX = boardWidth/8;
     int birdY = boardHeight/2;
@@ -90,7 +90,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         background = new ImageIcon(getClass().getResource("./flappybirdbg.png")).getImage();
         birdImg = new ImageIcon(getClass().getResource("./flappybird.png")).getImage();
         topPipeImg = new ImageIcon(getClass().getResource("./toppipe.png")).getImage();
-        bottomPipe = new ImageIcon(getClass().getResource("./bottompipe.png")).getImage();
+        bottomPipeImg = new ImageIcon(getClass().getResource("./bottompipe.png")).getImage();
 
         bird = new Bird(birdImg);
         pipes = new ArrayList<Pipe>();
@@ -110,9 +110,15 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     public void placePipes(){
         //                      0 - 128 -(0-256) --> 1/4 pipeHeight --> 3/4 pipeHeight
         int randomPipeY = (int)(pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2));
+        int openingSpace = boardWidth/3;
+
         Pipe topPipe = new Pipe(topPipeImg);
         topPipe.y = randomPipeY;
         pipes.add(topPipe);
+
+        Pipe bottomPipe = new Pipe(bottomPipeImg);
+        bottomPipe.y = topPipe.y + pipeHeight +openingSpace;
+        pipes.add(bottomPipe);
     }
 
     public void paintComponent(Graphics g){
