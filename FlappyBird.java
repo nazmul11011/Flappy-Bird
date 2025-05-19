@@ -7,8 +7,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class FlappyBird extends JPanel implements ActionListener, KeyListener {
-    int boardWidth = 360;
-    int boardHeight =640;
+    private final int boardWidth = 360;
+    private final int boardHeight =640;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,34 +42,34 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {}
 
-    Image background;
-    Image birdImg;
-    Image topPipeImg;
-    Image bottomPipeImg;
+    private Image background;
+    private Image birdImg;
+    private Image topPipeImg;
+    private Image bottomPipeImg;
 
-    int birdX = boardWidth/8;
-    int birdY = boardHeight/2;
-    int birdWidth = 34;
-    int birdHeight = 24;
+    private final int birdX = boardWidth/8;
+    private final int birdY = boardHeight/2;
+    private final int birdWidth = 34;
+    private final int birdHeight = 24;
 
-    int pipeX = boardWidth;
-    int pipeY = 0;
-    int pipeWidth = 64;
-    int pipeHeight = 512;
+    private int pipeX = boardWidth;
+    private int pipeY = 0;
+    private int pipeWidth = 64;
+    private int pipeHeight = 512;
 
     Bird bird;
-    int velocityX = -4;
-    int velocityY = 0;
-    int gravity = 1;
+    private int velocityX = -4;
+    private int velocityY = 0;
+    private int gravity = 1;
 
     ArrayList<Pipe> pipes;
 
     Timer gameLoop;
     Timer placePipesTimer;
 
-    boolean gameOver = false;
+    private boolean gameOver = false;
 
-    double score = 0;
+    private double score = 0;
 
     FlappyBird(){
         setPreferredSize(new Dimension(boardWidth,boardHeight));

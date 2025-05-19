@@ -1,0 +1,45 @@
+boolean isPaused = false;
+
+@Override
+public void actionPerformed(ActionEvent e) {
+    if (!isPaused && !gameOver) {
+        move();
+        repaint();
+    }
+
+    if (gameOver) {
+        placePipesTimer.stop();
+        gameLoop.stop();
+    }
+}
+
+@Override
+public void keyPressed(KeyEvent e) {
+    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (!isPaused) {
+            velocityY = -9;
+            if (gameOver) {
+                bird.y = birdY;
+                velocityY = 0;
+                pipes.clear();
+                score = 0;
+                gameOver = false;
+                gameLoop.start();
+                placePipesTimer.start();
+            }
+        }
+    }
+
+    if (e.getKeyCode() == KeyEvent.VK_P) {
+        isPaused = !isPaused;
+    }
+}
+
+Show “Paused” message on screen (optional):
+Update the draw() method to show the paused state visually.
+
+if (isPaused && !gameOver) {
+    g.setColor(Color.yellow);
+    g.setFont(new Font("Arial", Font.BOLD, 32));
+    g.drawString("Paused", boardWidth / 2 - 60, boardHeight / 2);
+}
