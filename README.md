@@ -2,6 +2,8 @@
 
 This is a simple clone of the classic Flappy Bird game, built using **Java** and **Swing** for GUI rendering. The game mimics the basic mechanics of the original Flappy Bird: tap to fly, avoid obstacles, and score points.
 
+![ScreenShot](https://i.postimg.cc/sXBJqW9R/Screenshot-2025-05-19-093543.png)
+
 ## 🚀 Features
 
 - Pixel-style graphics using image assets.
@@ -28,10 +30,10 @@ This is a simple clone of the classic Flappy Bird game, built using **Java** and
 ├── bottompipe.png      # Bottom pipe image.
 ```
 
-## 📊 Mermaid.js Class Diagram
+## 📊 Class Diagram
 
 <details>
-  <summary></summary><pre><code>
+  <summary></summary><code>
 
 ```mermaid
 classDiagram
@@ -82,7 +84,7 @@ classDiagram
         -int width
         -int height
         -Image img
-        +Bird(Image)
+        +Bird(int x, int y, int width, int height, Image img)
     }
 
     class Pipe {
@@ -92,11 +94,30 @@ classDiagram
         -int height
         -Image img
         -boolean passed
-        +Pipe(Image)
+        +Pipe(int x, int y, int width, int height, Image img)
     }
 
     Main --> FlappyBird
     FlappyBird --> Bird
     FlappyBird --> Pipe
 ```
-</code></pre> </details>
+</code>
+</details>
+
+## 🛠️ Requirements
+
+* Java Development Kit (JDK) 8 or above.
+* An IDE like IntelliJ IDEA, Eclipse, or just use `javac` and `java` CLI tools.
+
+## 📦 How to Run
+1. Clone or download the repository.
+2. Compile the files:
+
+   ```
+   javac Main.java FlappyBird.java
+   ```
+3. Run the game:
+
+   ```
+   java Main
+   ```
