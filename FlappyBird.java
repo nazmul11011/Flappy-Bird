@@ -53,19 +53,19 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     private final int birdHeight = 24;
 
     private int pipeX = boardWidth;
-    private int pipeY = 0;
-    private int pipeWidth = 64;
-    private int pipeHeight = 512;
+    private static int pipeY = 0;
+    private static int pipeWidth = 64;
+    private static int pipeHeight = 512;
 
-    Bird bird;
-    private int velocityX = -4;
-    private int velocityY = 0;
-    private int gravity = 1;
+    private Bird bird;
+    private static int velocityX = -4;
+    private static int velocityY = 0;
+    private static int gravity = 1;
 
-    ArrayList<Pipe> pipes;
+    private ArrayList<Pipe> pipes;
 
-    Timer gameLoop;
-    Timer placePipesTimer;
+    private Timer gameLoop;
+    private Timer placePipesTimer;
 
     private boolean gameOver = false;
 
